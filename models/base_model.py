@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 
+
+#import required module
 import uuid
 import datetime
+from models import storage
 
 
 class BaseModel:
@@ -30,6 +33,8 @@ class BaseModel:
                     value = datetime.datetime.strptime(value,
                                                        '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
+        if len(kwargs) == 0:
+            storage.new(self)
 
     def __str__(self):
         """
@@ -45,6 +50,7 @@ class BaseModel:
 
         """
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
