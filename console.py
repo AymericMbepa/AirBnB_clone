@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+this module contain entry point of the NBNB console
+
+"""
+
 #import required module
 import cmd
 
@@ -13,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
-        """exit the programm"""
+        """Exit on EOF (Ctrl + D)"""
         print()
         return True
 
