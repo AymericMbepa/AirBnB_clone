@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+"""
+defines all common attributes/methods for other classes
 
+"""
 
 #import required module
 import uuid
