@@ -5,7 +5,7 @@ class User that inherits from BaseModel
 """
 
 #import required module
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
@@ -16,3 +16,6 @@ class User(BaseModel):
     password = ""
     firstname = ""
     lastname = ""
+
+    def __init__(self, *args, **kwargs):
+        super.__init__(*args, **kwargs)
