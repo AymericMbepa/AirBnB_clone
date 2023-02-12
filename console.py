@@ -10,6 +10,7 @@ import cmd
 import json
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """A custom command interpreter for HBNB"""
@@ -35,12 +36,12 @@ class HBNBCommand(cmd.Cmd):
         """
         args = line.split()
         if not args:
-            print("**class name missing**")
+            print("** class name missing **")
             return
 
         class_name = args[0]
-        if class_name not in ['BaseModel']:
-            print("**class doesn't exist**")
+        if class_name not in ['BaseModel', 'User']:
+            print("** class doesn't exist **")
             return
 
         new_model = eval(class_name)()
@@ -56,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name is missing **")
             return
         class_name = ag[0]
-        if class_name not in ['BaseModel']:
+        if class_name not in ['BaseModel', 'User']:
             print("** class doesn't exist **")
             return
         my_id = ag[1]
@@ -76,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             line = line.split()
-            if line[0] in ["BaseModel"]:
+            if line[0] in ["BaseModel", "User"]:
                 if len(line) > 1:
                     instances = storage.all()
                     key = line[0] + '.' + line[1]
@@ -99,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             print([str(instances[key]) for key in instances])
         else:
             line = line.split()
-            if line[0] in ['BaseModel']:
+            if line[0] in ['BaseModel', 'User']:
                 instances = storage.all()
                 print([str(instances[key]) for key in instances
                        if key.startswith(line[0] + '.')])
@@ -114,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             line = line.split()
-            if line[0] in ['BaseModel']:
+            if line[0] in ['BaseModel', 'User']:
                 if len(line) >= 3:
                     instances = storage.all()
                     key = line[0] + '.' + line[1]
